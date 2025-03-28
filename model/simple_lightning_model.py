@@ -9,6 +9,7 @@ from lightning.pytorch.callbacks import ModelCheckpoint
 from utils import compute_topk_accuracy
 from model import configure_model, ModelConfig
 from setup import configure_optimizer, configure_scheduler
+from omegaconf import DictConfig
 
 
 class SimpleLightningModel(pl.LightningModule):
@@ -24,7 +25,7 @@ class SimpleLightningModel(pl.LightningModule):
 
     def __init__(
             self,
-            command_line_args: argparse.Namespace,
+            command_line_args: DictConfig,
             n_classes: int,
             exp_name: str,
     ):
@@ -43,9 +44,9 @@ class SimpleLightningModel(pl.LightningModule):
         self.exp_name = exp_name
 
         self.model = configure_model(ModelConfig(
-            model_name=self.args.model_name,
-            use_pretrained=self.args.use_pretrained,
-            torch_home=self.args.torch_home,
+            model_name=self.args.model.model_name,
+            use_pretrained=self.args.model.use_pretrained,
+            torch_home=self.args.model.torch_home,
             n_classes=n_classes,
         ))
 
@@ -58,15 +59,15 @@ class SimpleLightningModel(pl.LightningModule):
         """
 
         optimizer = configure_optimizer(
-            optimizer_name=self.args.optimizer_name,
-            lr=self.args.lr,
-            weight_decay=self.args.weight_decay,
-            momentum=self.args.momentum,
+            optimizer_name=self.args.optimizer.optimizer_name,
+            lr=self.args.optimizer.lr,
+            weight_decay=self.args.optimizer.weight_decay,
+            momentum=self.args.optimizer.momentum,
             model_params=self.model.parameters()
         )
         scheduler = configure_scheduler(
             optimizer=optimizer,
-            use_scheduler=self.args.use_scheduler
+            use_scheduler=self.args.optimizer.use_scheduler
         )
 
         return {"optimizer": optimizer, "lr_scheduler": scheduler}
@@ -76,7 +77,7 @@ class SimpleLightningModel(pl.LightningModule):
         https://lightning.ai/docs/pytorch/stable/common/lightning_module.html#configure-callbacks
         """
 
-        save_checkpoint_dir = os.path.join(self.args.save_checkpoint_dir, self.exp_name)
+        save_checkpoint_dir = os.path.join(self.args.checkpoint_file.save_checkpoint_dir, self.exp_name)
         if self.global_rank == 0:
             os.makedirs(save_checkpoint_dir, exist_ok=True)
 
@@ -144,7 +145,6 @@ class SimpleLightningModel(pl.LightningModule):
 
         data, labels = batch  # (BCHW, B) or {'video': BCTHW, 'label': B}
         batch_size = data.size(0)
-
         outputs = self.model(data, labels=labels)
         loss = outputs.loss
 
