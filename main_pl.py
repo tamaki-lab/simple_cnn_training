@@ -1,20 +1,53 @@
 
+from copy import deepcopy
+from argparse import Namespace
 import torch
 import lightning.pytorch as pl
+import yaml
+import os
 from lightning.pytorch.plugins import TorchSyncBatchNorm
 
 
-from args import ArgParse
+import argparse
 from logger import configure_logger_pl
 from callback import configure_callbacks
 from dataset import TrainValDataModule
 from model import SimpleLightningModel
 
 
-def main():
-    assert torch.cuda.is_available()
+def load_yaml(path):
+    with open(path, "r") as f:
+        return yaml.safe_load(f)
 
-    args = ArgParse.get()
+
+def merge_configs(default_cfg, override_cfg):
+    merged = deepcopy(default_cfg)
+    for k, v in override_cfg.items():
+        if isinstance(v, dict) and k in merged:
+            merged[k] = merge_configs(merged[k], v)
+        else:
+            merged[k] = v
+    return merged
+
+
+def dict_to_namespace(d):
+    return Namespace(**d)
+
+
+def get_args():
+    # Basic arguments
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--model', type=str, required=True)
+    return parser.parse_args()
+
+
+def main(args):
+    assert torch.cuda.is_available()
+    default_config = load_yaml("config/default_config.yaml")
+    config_path = args.model.split('_')[0] + '/' + args.model + '.yaml'
+    config = load_yaml(os.path.join('config', config_path))
+    merged_config = merge_configs(default_config, config)
+    args = dict_to_namespace(merged_config)
 
     loggers, exp_name = configure_logger_pl(
         model_name=args.model_name,
@@ -62,4 +95,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main(get_args())
