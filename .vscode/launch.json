@@ -351,5 +351,38 @@
                 "0,2,4,6"
             ]
         },
+        {
+            "name": "default.yaml main_pl.py 1GPU(0)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "main_pl.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "CUDA_VISIBLE_DEVICES": "0",
+                // "CUDA_LAUNCH_BLOCKING": "1",
+            },
+            "justMyCode": false,
+            "args": []
+        },
+        {
+            "name": "exp01.yaml main_pl.py 1GPU(0)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "main_pl.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "CUDA_VISIBLE_DEVICES": "0",
+                // "CUDA_LAUNCH_BLOCKING": "1",
+            },
+            "justMyCode": false,
+            "args": [
+                "--config-path",
+                "configs",
+                "--config-name",
+                "experiments/exp01/exp01_lr=0.0008",
+            ]
+        },
     ]
 }

@@ -1,0 +1,7 @@
+# exp01での固有設定を記述するファイル
+
+defaults:
+  - exp01_default # ← exp01_default.yaml を継承
+
+# optimizer:
+lr: 0.0001

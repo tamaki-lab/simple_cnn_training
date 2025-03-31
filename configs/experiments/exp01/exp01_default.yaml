@@ -1,0 +1,31 @@
+# exp01での共通設定を記述するファイル
+
+defaults:
+  - /default # ← configs/default.yaml を継承
+
+# dataset:
+root: "/mnt/NAS-TVS872XT/dataset-lab/Tiny-ImageNet"
+dataset_name: "ImageFolder"
+train_dir: "train"
+val_dir: "val"
+
+# model:
+model_name: "resnet18"
+use_pretrained: true
+scratch: false
+
+# training:
+batch_size: 8
+num_epochs: 25
+
+# optimizer:
+optimizer_name: "Adam"
+grad_accum: 1
+momentum: 0.9
+weight_decay: 0.0005
+use_scheduler: false
+no_scheduler: true
+
+# multi_gpu:
+use_dp: false
+devices: "-1"
