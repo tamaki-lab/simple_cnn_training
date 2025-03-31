@@ -1,0 +1,7 @@
+dataset_name: ImageFolder
+root: "/mnt/NAS-TVS872XT/dataset-lab/Tiny-ImageNet/"
+num_workers: 16
+batch_size: 64
+num_epochs: 5
+optimizer: Adam
+log_interval_steps: 10

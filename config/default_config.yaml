@@ -1,0 +1,34 @@
+root: "./downloaded_data"
+dataset_name: "CIFAR10"
+train_dir: "train"
+val_dir: "val"
+
+torch_home: "./pretrained_models"
+model_name: "resnet18"
+use_pretrained: true
+
+frames_per_clip: 16
+clip_duration: 80/30
+clips_per_video: 1
+
+batch_size: 8
+num_workers: 2
+num_epochs: 25
+val_interval_epochs: 1
+log_interval_steps: 1
+
+optimizer_name: "SGD"
+grad_accum: 1
+lr: 0.0001
+momentum: 0.9
+weight_decay: 0.0005
+use_scheduler: false
+
+use_dp: false
+devices: "-1"
+
+comet_log_dir: "./comet_logs/"
+tf_log_dir: "./tf_logs/"
+save_checkpoint_dir: "./log"
+checkpoint_to_resume: null
+disable_comet: false
