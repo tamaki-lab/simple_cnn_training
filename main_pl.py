@@ -10,11 +10,18 @@ from callback import configure_callbacks
 from dataset import TrainValDataModule
 from model import SimpleLightningModel
 
+from hydra import compose, initialize
+from configs import flatten_dictconfig
+
 
 def main():
     assert torch.cuda.is_available()
 
-    args = ArgParse.get()
+    pre_args = ArgParse.get()
+
+    with initialize(config_path=pre_args.config_path):
+        args = compose(config_name=pre_args.config_name)
+    args = flatten_dictconfig(args)
 
     loggers, exp_name = configure_logger_pl(
         model_name=args.model_name,

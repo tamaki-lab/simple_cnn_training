@@ -1,0 +1,47 @@
+# dataset:
+root: "./downloaded_data"
+dataset_name: "CIFAR10" # choices=["CIFAR10", "ImageFolder", "VideoFolder", "ZeroImages"]
+train_dir: "train"
+val_dir: "val"
+
+# model:
+torch_home: "./pretrained_models"
+model_name: "resnet18" # choices=["resnet18", "resnet50", "x3d", "abn_r50", "vit_b", "zero_output_dummy"]
+use_pretrained: true
+scratch: false
+
+# video:
+frames_per_clip: 16
+clip_duration: 2.6666666666666665 # (80/30秒)
+clips_per_video: 1
+
+# training:
+batch_size: 8
+num_workers: 2
+num_epochs: 25
+val_interval_epochs: 1
+log_interval_steps: 1
+
+# optimizer:
+optimizer_name: "SGD" # choices=["SGD", "Adam"]
+grad_accum: 1
+lr: 0.0001
+momentum: 0.9
+weight_decay: 0.0005
+use_scheduler: false
+no_scheduler: true
+
+# multi_gpu:
+use_dp: false
+devices: "-1"
+
+# logs:
+comet_log_dir: "./comet_logs/"
+tf_log_dir: "./tf_logs/"
+
+# checkpoint:
+save_checkpoint_dir: "./log"
+checkpoint_to_resume: null
+
+# comet:
+disable_comet: false
