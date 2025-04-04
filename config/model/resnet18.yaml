@@ -1,0 +1,12 @@
+model_name: "resnet18"
+
+frames_per_clip: 16
+clip_duration: 2.6667
+clips_per_video: 1
+
+batch_size: 8
+num_workers: 2
+num_epochs: 25
+val_interval_epochs: 1
+log_interval_steps: 1
+lr: 0.0001

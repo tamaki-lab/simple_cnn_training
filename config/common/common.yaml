@@ -1,0 +1,20 @@
+torch_home: "./pretrained_models"
+
+use_pretrained: true
+
+optimizer_name: "SGD"
+grad_accum: 1
+learning_rate: 0.0001
+momentum: 0.9
+weight_decay: 0.0005
+use_scheduler: false
+
+use_dp: false
+
+comet_log_dir: "./comet_logs/"
+tf_log_dir: "./tf_logs/"
+
+save_checkpoint_dir: "./log"
+checkpoint_to_resume: null
+
+disable_comet: false
