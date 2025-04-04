@@ -1,0 +1,4 @@
+root: "/mnt/NAS-TVS872XT/dataset-lab/Tiny-ImageNet/"
+dataset_name: "ImageFolder"
+train_dir: "train"
+val_dir: "val"
