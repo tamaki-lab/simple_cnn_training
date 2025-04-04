@@ -46,31 +46,6 @@
             ]
         },
         {
-            "name": "main.py 1GPU(0) new",
-            "type": "debugpy",
-            "request": "launch",
-            "program": "main.py",
-            "console": "integratedTerminal",
-            "cwd": "${workspaceFolder}",
-            "env": {
-                "CUDA_VISIBLE_DEVICES": "0",
-                // "CUDA_LAUNCH_BLOCKING": "1",
-            },
-            "justMyCode": false,
-            "args": [
-                "--common_config",
-                "config/common/common.yaml",
-                "--model_config",
-                "config/model/resnet18.yaml",
-                "--devices",
-                "0",
-                "--dataset_config",
-                "config/dataset/tiny-imagenet.yaml"
-                // "--checkpoint_to_resume",
-                // "./log/epoch3_steps2344_acc70.51.pt"
-            ]
-        },
-        {
             "name": "main.py 1GPU(1)",
             "type": "debugpy",
             "request": "launch",
