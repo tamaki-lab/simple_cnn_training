@@ -25,10 +25,7 @@ flake8-variables-names
 pep8-naming
 
 
-## pytorch
-torch
-torchvision
-torchaudio
+## pytorch-related
 git+https://github.com/facebookresearch/pytorchvideo.git
 lightning
 # torchinfo
@@ -52,9 +49,10 @@ imgaug
 av
 kornia>=0.6.10
 # opencv-python4.7.0.72 doesn't have FFMPEG?
-opencv-python<4.6
-opencv-python-headless<4.6
-
+# opencv-python<4.6
+# opencv-python-headless<4.6
+opencv-python
+opencv-python-headless
 
 ## COCO
 # pycocotools>=2.0.6

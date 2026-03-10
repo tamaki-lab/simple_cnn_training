@@ -8,4 +8,4 @@ pretrained_models/
 hub/
 .mypy_cache/
 .pytest_cache/
-.venv/
+.venv*/

@@ -7,7 +7,10 @@ CNN/ViT を使って学習する単純な練習用コードです．
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
+pip install -U pip
+pip install -r requirements.pytorch.txt
 pip install -r requirements.txt
+
 ```
 
 ## 使い方
