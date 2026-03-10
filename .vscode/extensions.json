@@ -3,11 +3,12 @@
         "davidanson.vscode-markdownlint",
         "esbenp.prettier-vscode",
         "geriyoco.vscode-image-gallery",
+        "github.copilot-chat",
+        "github.remotehub",
         "grapecity.gc-excelviewer",
         "lextudio.restructuredtext",
         "mechatroner.rainbow-csv",
         "mhutchie.git-graph",
-        "ms-azuretools.vscode-docker",
         "ms-ceintl.vscode-language-pack-ja",
         "ms-python.autopep8",
         "ms-python.black-formatter",
@@ -27,7 +28,6 @@
         "shd101wyy.markdown-preview-enhanced",
         "sirtori.indenticator",
         "usernamehw.errorlens",
-        "visualstudioexptteam.vscodeintellicode",
         "yzhang.markdown-all-in-one",
         "zainchen.json"
     ]
