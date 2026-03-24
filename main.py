@@ -132,7 +132,7 @@ class ValidationChecker:
 
 
 def main():
-
+# これはmain関数です
     args = ArgParse.get()
 
     (
