@@ -198,6 +198,23 @@
             ]
         },
         {
+            "name": "yaml_test main_pl.py 1GPU(0)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "main_pl.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "CUDA_VISIBLE_DEVICES": "0",
+                // "CUDA_LAUNCH_BLOCKING": "1",
+            },
+            "justMyCode": false,
+            "args": [
+                "--model",
+                "resnet18_config1"
+            ]
+        },
+        {
             "name": "main_pl.py 1GPU(1)",
             "type": "debugpy",
             "request": "launch",
