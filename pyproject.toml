@@ -1,3 +1,11 @@
+[project]
+name = "simple_cnn_training"
+version = "0.0.1"
+description = ""
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
+
 # [tool.autopep8]
 # # https://github.com/hhatto/autopep8#configuration
 # # https://pycodestyle.pycqa.org/en/latest/intro.html#error-codes
