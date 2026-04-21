@@ -10,14 +10,15 @@ source .venv/bin/activate
 pip install -U pip
 pip install -r requirements.pytorch.txt
 pip install -r requirements.txt
-
 ```
 
 ## 使い方
 
 ```bash
 python3 main.py -w 24 -b 8 -e 5 -d ImageFolder -r /mnt/NAS-TVS872XT/dataset-lab/Tiny-ImageNet/  --use_dp
+python3 main.py -w 24 -b 8 -e 5 -d ImageFolder -r /mnt/NAS-TVS872XT/dataset-lab/Tiny-ImageNet/  --use_dp --disable_comet  # no comet
 python3 main_pl.py -w 24 -b 8 -e 5 -d ImageFolder -r /mnt/NAS-TVS872XT/dataset-lab/Tiny-ImageNet/ --devices 3
+python3 main_pl.py -w 24 -b 8 -e 5 -d ImageFolder -r /mnt/NAS-TVS872XT/dataset-lab/Tiny-ImageNet/ --devices 3 --disable_comet # no comet
 ```
 
 `_pl`がついたファイルは Pytorch lightning のコードを使用（ddp のみ対応）．
@@ -66,6 +67,7 @@ task 用には[tasks.json](.vscode/tasks.json)に次のように設定する．
   - `ImageFolder`：`-r`で指定したフォルダ以下に`train/`と`val/`のディレクトリがあり，それ以下はカテゴリ名のサブディレクトリに分かれて保存されている画像データセット（[torchvision の ImageFolder](https://pytorch.org/vision/main/generated/torchvision.datasets.ImageFolder.html)）
 - `--use_dp`：dp (Data Parallel)で複数 GPU を使用する（lightning ではない場合）
 - `--devices`: lightning の ddp で使用する GPU 番号（-1 は全 GPU を使用）
+- `--disable_comet`: cometを無効化して実行する
 
 #### help
 
