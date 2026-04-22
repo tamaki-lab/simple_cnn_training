@@ -1,11 +1,13 @@
 from typing import Tuple
-from datetime import datetime
+# from datetime import datetime
 
 from comet_ml import Experiment
 from lightning.pytorch.loggers import CometLogger
+from omegaconf import DictConfig
 
 
 def configure_logger_pl(
+        command_line_cfg: DictConfig,
         model_name: str,
         disable_logging: bool,
         save_dir: str,
@@ -21,8 +23,9 @@ def configure_logger_pl(
         comet_ml.Experiment: logger
         str: experiment name of comet.ml
     """
+    cfg = command_line_cfg
 
-    exp_name = datetime.now().strftime("%Y-%m-%d_%H:%M:%S:%f")
+    exp_name = f"{cfg.model.model_name}_{cfg.dataset.dataset_name}"
     exp_name = exp_name.replace(" ", "_")
 
     # Use ./.comet.config and ~/.comet.config
